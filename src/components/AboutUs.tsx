@@ -3,6 +3,7 @@
 import React from 'react';
 import { FaSpa, FaPaintBrush, FaHeart, FaUsers } from 'react-icons/fa';
 // import  Slider  from '../components/Slider';
+// testing the comment with git push
 
 const AboutUs: React.FC = () => {
   return (
