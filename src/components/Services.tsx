@@ -1,7 +1,7 @@
 import React from "react";
 
-const Services: React.FC = () => {
-  const services = [
+const Services: React.FC<{ gender: 'female' | 'male' }> = ({ gender }) => {
+  const femaleServices = [
     {
       title: "Hair Styling & Coloring",
       description: "Trendy cuts, highlights, and styles that enhance your beauty.",
@@ -34,11 +34,46 @@ const Services: React.FC = () => {
     },
   ];
 
+  const maleServices = [
+    {
+      title: "Haircut & Styling",
+      description: "Modern and classic haircuts to suit your style.",
+      icon: "💇‍♂️",
+    },
+    {
+      title: "Shave & Beard Trim",
+      description: "Precision shaves and beard grooming for a sharp look.",
+      icon: "🧔",
+    },
+    {
+      title: "Men's Facial",
+      description: "Deep cleansing and rejuvenating facials for men.",
+      icon: "💆‍♂️",
+    },
+    {
+      title: "Head Massage",
+      description: "Relaxing head massages to de-stress and unwind.",
+      icon: "💆‍♂️",
+    },
+    {
+      title: "Hair Color",
+      description: "Subtle and bold hair coloring options.",
+      icon: "🎨",
+    },
+    {
+      title: "Grooming Packages",
+      description: "Complete grooming packages for the modern man.",
+      icon: "📦",
+    },
+  ];
+
+  const services = gender === 'female' ? femaleServices : maleServices;
+
   return (
-    <section id="services" className="py-16 bg-pink-50">
+    <section id="services" className={`py-16 ${gender === 'female' ? 'bg-pink-50' : 'bg-blue-50'}`}>
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-12 text-[#5D0F36]">
-          Women’s Parlour Services
+          {gender === 'female' ? 'Women’s Parlour Services' : 'Men’s Grooming Services'}
         </h2>
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">

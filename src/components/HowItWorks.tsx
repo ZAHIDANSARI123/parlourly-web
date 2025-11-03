@@ -1,7 +1,7 @@
 import React from "react";
 
-const HowItWorks: React.FC = () => {
-  const steps = [
+const HowItWorks: React.FC<{ gender: 'female' | 'male' }> = ({ gender }) => {
+  const femaleSteps = [
     {
       step: "1",
       title: "Choose Service",
@@ -28,8 +28,37 @@ const HowItWorks: React.FC = () => {
     },
   ];
 
+  const maleSteps = [
+    {
+      step: "1",
+      title: "Select Grooming",
+      description: "Choose from a range of men's grooming services.",
+      icon: "✂️",
+    },
+    {
+      step: "2",
+      title: "Schedule Time",
+      description: "Book an appointment at your preferred date and time.",
+      icon: "🗓️",
+    },
+    {
+      step: "3",
+      title: "Expert Arrives",
+      description: "Our professional barber will arrive at your location.",
+      icon: "🚗",
+    },
+    {
+      step: "4",
+      title: "Look Sharp",
+      description: "Enjoy your fresh look and feel confident.",
+      icon: "😎",
+    },
+  ];
+
+  const steps = gender === 'female' ? femaleSteps : maleSteps;
+
   return (
-    <section id="how-it-works" className="py-16 bg-white">
+    <section id="how-it-works" className={`py-16 ${gender === 'female' ? 'bg-white' : 'bg-blue-50'}`}>
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-12 text-[#5D0F36]">
           How It Works
@@ -39,7 +68,7 @@ const HowItWorks: React.FC = () => {
           {steps.map((item, index) => (
             <div
               key={index}
-              className="flex flex-col items-center text-center bg-pink-50 p-6 rounded-2xl shadow-md hover:shadow-xl transition"
+              className={`flex flex-col items-center text-center p-6 rounded-2xl shadow-md hover:shadow-xl transition ${gender === 'female' ? 'bg-pink-50' : 'bg-blue-100'}`}
             >
               <div className="text-4xl mb-4">{item.icon}</div>
               <span className="text-sm font-bold text-[#5D0F36] mb-2">

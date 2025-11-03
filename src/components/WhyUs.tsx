@@ -1,7 +1,7 @@
 import React from "react";
 
-const WhyUs: React.FC = () => {
-  const reasons = [
+const WhyUs: React.FC<{ gender: 'female' | 'male' }> = ({ gender }) => {
+  const femaleReasons = [
     {
       title: "Experienced Beauticians",
       description: "Our skilled team ensures you get professional care every visit.",
@@ -29,8 +29,38 @@ const WhyUs: React.FC = () => {
     },
   ];
 
+  const maleReasons = [
+    {
+      title: "Expert Barbers",
+      description: "Our skilled barbers provide precision cuts and grooming.",
+      icon: "👨‍🦱",
+    },
+    {
+      title: "Quality Products",
+      description: "We use premium grooming products for the best results.",
+      icon: "🧴",
+    },
+    {
+      title: "Comfortable Setting",
+      description: "Relax in a modern and comfortable grooming environment.",
+      icon: "💈",
+    },
+    {
+      title: "Tailored Styles",
+      description: "Customized haircuts and beard styles to match your preference.",
+      icon: "✂️",
+    },
+    {
+      title: "Great Value",
+      description: "High-quality services at competitive prices.",
+      icon: "💸",
+    },
+  ];
+
+  const reasons = gender === 'female' ? femaleReasons : maleReasons;
+
   return (
-    <section id="why-us" className="py-16 bg-white">
+    <section id="why-us" className={`py-16 ${gender === 'female' ? 'bg-white' : 'bg-blue-50'}`}>
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-12 text-[#5D0F36]">
           Why Choose Parlourly?
@@ -40,7 +70,7 @@ const WhyUs: React.FC = () => {
           {reasons.map((reason, index) => (
             <div
               key={index}
-              className="bg-pink-50 shadow-md rounded-2xl p-6 text-center hover:shadow-xl transition"
+              className={`shadow-md rounded-2xl p-6 text-center hover:shadow-xl transition ${gender === 'female' ? 'bg-pink-50' : 'bg-blue-100'}`}
             >
               <div className="text-4xl mb-4">{reason.icon}</div>
               <h3 className="text-xl font-semibold text-[#5D0F36]">
